@@ -403,9 +403,10 @@ L.print.Provider = L.Class.extend({
 				return L.extend(enc, {
 					// XYZ layer type would be a better fit but is not supported in mapfish plugin for GeoServer
 					// See https://github.com/mapfish/mapfish-print/pull/38
-					type: 'OSM',
+					type: 'XYZ',
 					baseURL: baseUrl,
-					extension: 'png',
+                    path_format: '${z}/${y}/${x}',
+					extension: '',
 					tileSize: [layer.options.tileSize, layer.options.tileSize],
 					maxExtent: L.print.Provider.MAX_EXTENT,
 					resolutions: resolutions,
@@ -452,10 +453,11 @@ L.print.Provider = L.Class.extend({
                 return {
                     // XYZ layer type would be a better fit but is not supported in mapfish plugin for GeoServer
                     // See https://github.com/mapfish/mapfish-print/pull/38
-                    type: 'OSM',
+                    type: 'XYZ',
                     baseURL: layer.options.tiles[0].substring(0, layer.options.tiles[0].indexOf('{z}')),
+                    path_format: '${z}/${y}/${x}',
                     opacity: layer.options.opacity,
-                    extension: 'png',
+                    extension: '',
                     tileSize: [layer.options.tileSize, layer.options.tileSize],
                     maxExtent: L.print.Provider.MAX_EXTENT,
                     resolutions: resolutions,
